@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { ChatMessage, XAIExplanation } from '../types';
 import { generateScriptedResponse } from '../utils/scriptedResponses';
+import { getQueryContext } from '../utils/queryAnalyzer';
 
 export const useChat = (initialScenario: any) => {
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
@@ -19,7 +20,7 @@ export const useChat = (initialScenario: any) => {
 
   const sendMessage = useCallback(async (message: string): Promise<XAIExplanation | null> => {
     if (!message.trim() || isLoading) return null;
-    
+
     setError(null);
     logEvent('user_query', { query: message });
     setIsLoading(true);
@@ -27,7 +28,27 @@ export const useChat = (initialScenario: any) => {
     try {
       // Simulate realistic processing time
       await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 1200));
-      
+
+      const context = getQueryContext(message);
+
+      if (context === 'general') {
+        const resp = await fetch('/api/openai', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: message })
+        });
+        const data = await resp.json();
+        const answer: XAIExplanation = {
+          defaultTab: 'insight',
+          response: data.result,
+          insight: { text: data.result },
+          reasoning: { text: '' },
+          projection: { text: '' }
+        };
+        logEvent('ai_response', { question: message, response: answer });
+        return answer;
+      }
+
       const response = generateScriptedResponse(message);
       logEvent('ai_response', { question: message, response });
       return response;
