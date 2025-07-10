@@ -24,7 +24,11 @@ export const useXAI = (scenario: COAScenario = defaultScenario) => {
     setCurrentExplanation(explanation);
     setActiveTab(explanation.defaultTab || 'insight');
     setConfidence(explanation.confidence || 75);
-    setSuggestedPrompts(explanation.suggestedPrompts || []);
+    setSuggestedPrompts(
+      explanation.suggestedPrompts && explanation.suggestedPrompts.length > 0
+        ? explanation.suggestedPrompts
+        : suggestedPrompts
+    );
   };
 
   return {
