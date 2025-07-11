@@ -47,6 +47,26 @@ export const useChat = (initialScenario: any) => {
         };
         logEvent('ai_response', { question: message, response: answer });
         return answer;
+
+      }
+
+      if (context === 'weather') {
+        const resp = await fetch('/api/weather', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ location: message })
+        });
+        const data = await resp.json();
+        const info = data.result;
+        const answer: XAIExplanation = {
+          defaultTab: 'insight',
+          response: `Current weather in ${info.location}: ${info.temperature}°C, ${info.description}.`,
+          insight: { text: `The temperature in ${info.location} is ${info.temperature}°C with ${info.description}.` },
+          reasoning: { text: '' },
+          projection: { text: '' }
+        };
+        logEvent('ai_response', { question: message, response: answer });
+        return answer;
       }
 
       const response = generateScriptedResponse(message);
