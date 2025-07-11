@@ -73,6 +73,7 @@ export const getQueryContext = (query: string): string => {
     { pattern: ['target', 'infrastructure', 'asset'], context: 'target_analysis' },
     { pattern: ['communication', 'atc', 'radio', 'contact'], context: 'communication' },
     { pattern: ['risk', 'danger', 'threat level'], context: 'risk_assessment' }
+    { pattern: ['weather', 'temperature', 'forecast', 'rain', 'sunny', 'wind', 'climate'], context: 'weather' }
   ];
   
   for (const { pattern, context } of contexts) {
