@@ -17,9 +17,14 @@ npm run dev
 
 The Vite dev server proxies `/api` requests to the local Node server.
 
+### Environment Variables
+
+Set `OPENAI_API_KEY` to enable AI responses and `OPENWEATHERMAP_API_KEY` for weather queries.
+
 ## Deployment on Vercel
 
 The `/api/openai` endpoint is also implemented as a Vercel serverless
 function in `api/openai.js`. When deploying to Vercel, no separate Node
 server is required—just define `OPENAI_API_KEY` in the project settings
-and the function will handle unscripted queries.
+and the function will handle unscripted queries. A `/api/weather` function
+is provided for weather lookups and requires `OPENWEATHERMAP_API_KEY`.
