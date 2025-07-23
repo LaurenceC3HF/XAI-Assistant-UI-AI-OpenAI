@@ -160,7 +160,7 @@ export const usePrecompute = (options: UsePrecomputeOptions = {}) => {
   }, [manager]);
 
   // Clear completed jobs
-  const clearCompletedJobs = useCallback(): number => {
+  const clearCompletedJobs = useCallback((): number => {
     if (!manager) return 0;
     const cleared = manager.clearCompletedJobs();
     refreshData();
