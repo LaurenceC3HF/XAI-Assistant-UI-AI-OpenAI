@@ -14,7 +14,20 @@ app.post('/api/openai', async (req, res) => {
 
   try {
     const systemPrompt =
-      'You are an explainable AI assistant for a military command and control setting. Respond ONLY in JSON using this schema:\n{"explanationType":"insight | reasoning | projection","content":"..."}.';
+      'You are an explainable AI assistant in a military Command and Control (C2) setting. Based on the user’s question, reply with exactly one of the following explanation types:
+- INSIGHT: Describe what is currently happening.
+- REASONING: Explain why a situation or recommendation is important.
+- PROJECTION: Predict what might happen next.
+
+Your reply must be ONLY in valid JSON, using this format:
+
+{
+  "explanationType": "insight | reasoning | projection",
+  "content": "..."
+}
+
+Respond with nothing else.
+`;
     
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
