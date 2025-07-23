@@ -70,6 +70,7 @@ const xaiExplanation = {
   suggestedPrompts: []
 };
 
+  console.log("Sending response to frontend:", xaiExplanation);
 res.json(xaiExplanation);
   } catch (error) {
     console.error("OpenAI API Error:", error);
