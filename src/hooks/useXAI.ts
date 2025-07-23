@@ -27,7 +27,12 @@ export const useXAI = (scenario: COAScenario = defaultScenario) => {
     setSuggestedPrompts(
       explanation.suggestedPrompts && explanation.suggestedPrompts.length > 0
         ? explanation.suggestedPrompts
-        : suggestedPrompts
+        : [
+            "Why is the flight deviation significant?",
+            "What makes this pattern suspicious?",
+            "Explain the 15-minute timeline",
+            "What are the intercept options?"
+          ]
     );
   };
 
