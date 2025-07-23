@@ -9,6 +9,9 @@ export default async function handler(req, res) {
   }
 
   const { prompt } = req.body || {};
+  if (!prompt || typeof prompt !== 'string') {
+    return res.status(400).json({ error: 'Invalid prompt.' });
+  }
 
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -26,12 +29,14 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       const text = await response.text();
+      console.error("OpenAI API Response Error:", text);
       return res.status(500).json({ error: text });
     }
 
     const data = await response.json();
     res.status(200).json({ result: data.choices?.[0]?.message?.content || '' });
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch from OpenAI API' });
+    console.error("OpenAI API Error:", error);
+    res.status(500).json({ error: 'Failed to fetch from OpenAI API', details: error.message });
   }
 }
