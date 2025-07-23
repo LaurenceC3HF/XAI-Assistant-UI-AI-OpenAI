@@ -8,8 +8,6 @@ import { useChat } from './hooks/useChat';
 import { useInteractionLogger } from './hooks/useInteractionLogger';
 import { defaultScenario } from './data/scenarios';
 import { ChatMessage } from './types';
-import { PrecomputeButton } from './components/PrecomputeButton';
-import { usePrecompute } from './hooks/usePrecompute';
 
 function App() {
   const {
@@ -46,15 +44,6 @@ function App() {
     exportInteractions
   } = useInteractionLogger(activeTab, chatHistory.length, currentExplanation.response);
 
-  // Initialize precompute system
-  const { getResponseForChat } = usePrecompute({
-    autoInitialize: true,
-    defaultConfig: {
-      enableXAI: true,
-      cacheExpiry: 24
-    }
-  });
-
   const handleTabChange = (newTab: typeof activeTab) => {
     logTabSwitch(activeTab, newTab);
     setActiveTab(newTab);
@@ -63,14 +52,6 @@ function App() {
   const handleSendMessage = async (message: string) => {
     const startTime = Date.now();
     logChatMessage(message);
-    
-    // Try to get precomputed response first
-    const precomputedResponse = await getResponseForChat(message);
-    if (precomputedResponse) {
-      const responseTime = Date.now() - startTime;
-      logChatMessage(message, responseTime);
-      return precomputedResponse;
-    }
     
     const response = await sendMessage(message);
     const responseTime = Date.now() - startTime;
@@ -137,9 +118,6 @@ function App() {
         sessionId={sessionId}
         onExport={exportInteractions}
       />
-
-      {/* Precompute System */}
-      <PrecomputeButton />
 
       {/* Global Styles */}
       <style dangerouslySetInnerHTML={{
