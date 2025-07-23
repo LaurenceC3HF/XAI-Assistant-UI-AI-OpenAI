@@ -50,15 +50,14 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Invalid response format from OpenAI.' });
     }
 
-    const type = String(parsed.explanationType).toLowerCase();
-    if (!['insight', 'reasoning', 'projection'].includes(type) || typeof parsed.content !== 'string') {
-      console.error('Unexpected schema from OpenAI:', parsed);
-      return res.status(500).json({ error: 'Invalid response schema from OpenAI.' });
+    if (!['insight', 'reasoning', 'projection', 'error'].includes(type) || typeof parsed.content !== 'string') {
+  console.error('Unexpected schema from OpenAI:', parsed);
+  return res.status(500).json({ error: 'Invalid response schema from OpenAI.' });
     }
 
     const xaiExplanation = {
-      defaultTab: type,
-      insight: type === 'insight' ? parsed.content : null,
+      defaultTab: type === 'error' ? 'insight' : type,
+      insight: type === 'insight' ? parsed.content : (type === 'error' ? parsed.content : null),
       reasoning: type === 'reasoning' ? parsed.content : null,
       projection: type === 'projection' ? parsed.content : null,
       confidence: null,
