@@ -15,7 +15,7 @@ export const usePrecompute = (options: UsePrecomputeOptions = {}) => {
   const [jobs, setJobs] = useState<PrecomputeJob[]>([]);
   const [statistics, setStatistics] = useState<any>(null);
   const [config, setConfig] = useState<PrecomputeConfig>({
-    openaiApiKey: process.env.OPENAI_API_KEY || '',
+    openaiApiKey: import.meta.env.VITE_OPENAI_API_KEY || '',
     model: 'gpt-3.5-turbo',
     temperature: 0.7,
     maxTokens: 1000,
