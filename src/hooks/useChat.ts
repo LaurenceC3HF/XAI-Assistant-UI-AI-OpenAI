@@ -37,17 +37,24 @@ export const useChat = (initialScenario: any) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ prompt: message })
         });
+        
         const data = await resp.json();
+        
         const answer: XAIExplanation = {
-          defaultTab: 'insight',
-          response: data.result,
-          insight: { text: data.result },
-          reasoning: { text: '' },
-          projection: { text: '' }
+          defaultTab: data.defaultTab,
+          response: data[data.defaultTab], // get the text from the active explanation type
+          insight: data.insight ? { text: data.insight } : { text: '' },
+          reasoning: data.reasoning ? { text: data.reasoning } : { text: '' },
+          projection: data.projection ? { text: data.projection } : { text: '' },
+          confidence: data.confidence || null,
+          showShapChart: data.showShapChart || false,
+          showDAG: data.showDAG || false,
+          highlightedFeatures: data.highlightedFeatures || [],
+          graphNodes: data.graphNodes || [],
+          suggestedPrompts: data.suggestedPrompts || []
         };
         logEvent('ai_response', { question: message, response: answer });
         return answer;
-
       }
 
       if (context === 'weather') {
