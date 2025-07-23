@@ -1,5 +1,5 @@
 import axios from 'axios';
-import crypto from 'crypto';
+import { v4 as uuidv4 } from 'uuid';
 import { XAIExplanation, DAGData, AlternativeOutcome } from '../types';
 
 export interface PrecomputedResponse {
@@ -40,8 +40,12 @@ export class PrecomputeService {
   /**
    * Generate hash for query to enable caching
    */
-  private generateQueryHash(query: string): string {
-    return crypto.createHash('sha256').update(query.toLowerCase().trim()).digest('hex');
+  private async generateQueryHash(query: string): Promise<string> {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(query.toLowerCase().trim());
+    const hashBuffer = await window.crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
   /**
@@ -82,8 +86,8 @@ export class PrecomputeService {
   /**
    * Get cached response if available
    */
-  public getCachedResponse(query: string): PrecomputedResponse | null {
-    const hash = this.generateQueryHash(query);
+  public async getCachedResponse(query: string): Promise<PrecomputedResponse | null> {
+    const hash = await this.generateQueryHash(query);
     return this.cache.get(hash) || null;
   }
 
@@ -92,10 +96,10 @@ export class PrecomputeService {
    */
   public async precomputeResponse(query: string): Promise<PrecomputedResponse> {
     const startTime = Date.now();
-    const queryHash = this.generateQueryHash(query);
+    const queryHash = await this.generateQueryHash(query);
 
     // Check cache first
-    const cached = this.getCachedResponse(query);
+    const cached = await this.getCachedResponse(query);
     if (cached) {
       return cached;
     }
@@ -114,7 +118,7 @@ export class PrecomputeService {
       const xaiTime = Date.now() - xaiStart;
 
       const response: PrecomputedResponse = {
-        id: crypto.randomUUID(),
+        id: uuidv4(),
         queryHash,
         originalQuery: query,
         openaiResponse,

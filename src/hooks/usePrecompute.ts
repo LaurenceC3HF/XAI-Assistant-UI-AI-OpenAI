@@ -68,9 +68,9 @@ export const usePrecompute = (options: UsePrecomputeOptions = {}) => {
   }, [manager]);
 
   // Get cached response
-  const getCachedResponse = useCallback((query: string): PrecomputedResponse | null => {
+  const getCachedResponse = useCallback(async (query: string): Promise<PrecomputedResponse | null> => {
     if (!manager) return null;
-    return manager['precomputeService'].getCachedResponse(query);
+    return await manager['precomputeService'].getCachedResponse(query);
   }, [manager]);
 
   // Precompute single response
@@ -179,7 +179,7 @@ export const usePrecompute = (options: UsePrecomputeOptions = {}) => {
     if (!manager) return null;
 
     // First check cache
-    const cached = getCachedResponse(query);
+    const cached = await getCachedResponse(query);
     if (cached) {
       return cached.xaiExplanation;
     }
