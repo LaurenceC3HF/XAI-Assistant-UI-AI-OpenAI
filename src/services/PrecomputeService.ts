@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
+import crypto from 'crypto';
 import { XAIExplanation, DAGData, AlternativeOutcome } from '../types';
 
 export interface PrecomputedResponse {
@@ -41,15 +41,7 @@ export class PrecomputeService {
    * Generate hash for query to enable caching
    */
   private generateQueryHash(query: string): string {
-    // Simple non-cryptographic hash function for browser compatibility
-    const str = query.toLowerCase().trim();
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      const char = str.charCodeAt(i);
-      hash = ((hash << 5) - hash) + char;
-      hash = hash & hash; // Convert to 32-bit integer
-    }
-    return Math.abs(hash).toString(16);
+    return crypto.createHash('sha256').update(query.toLowerCase().trim()).digest('hex');
   }
 
   /**
@@ -122,7 +114,7 @@ export class PrecomputeService {
       const xaiTime = Date.now() - xaiStart;
 
       const response: PrecomputedResponse = {
-        id: uuidv4(),
+        id: crypto.randomUUID(),
         queryHash,
         originalQuery: query,
         openaiResponse,
