@@ -42,33 +42,35 @@ export default async function handler(req, res) {
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content || '';
 
-    let parsed;
-    try {
-      parsed = JSON.parse(content);
-    } catch (err) {
-      console.error('Invalid JSON from OpenAI:', content);
-      return res.status(500).json({ error: 'Invalid response format from OpenAI.' });
-    }
+let parsed;
+try {
+  parsed = JSON.parse(content);
+} catch (err) {
+  console.error('Invalid JSON from OpenAI:', content);
+  return res.status(500).json({ error: 'Invalid response format from OpenAI.' });
+}
 
-    if (!['insight', 'reasoning', 'projection', 'error'].includes(type) || typeof parsed.content !== 'string') {
+const type = String(parsed.explanationType).toLowerCase();
+
+if (!['insight', 'reasoning', 'projection', 'error'].includes(type) || typeof parsed.content !== 'string') {
   console.error('Unexpected schema from OpenAI:', parsed);
   return res.status(500).json({ error: 'Invalid response schema from OpenAI.' });
-    }
+}
 
-    const xaiExplanation = {
-      defaultTab: type === 'error' ? 'insight' : type,
-      insight: type === 'insight' ? parsed.content : (type === 'error' ? parsed.content : null),
-      reasoning: type === 'reasoning' ? parsed.content : null,
-      projection: type === 'projection' ? parsed.content : null,
-      confidence: null,
-      showShapChart: false,
-      showDAG: false,
-      highlightedFeatures: [],
-      graphNodes: [],
-      suggestedPrompts: []
-    };
+const xaiExplanation = {
+  defaultTab: type === 'error' ? 'insight' : type,
+  insight: type === 'insight' || type === 'error' ? parsed.content : null,
+  reasoning: type === 'reasoning' ? parsed.content : null,
+  projection: type === 'projection' ? parsed.content : null,
+  confidence: null,
+  showShapChart: false,
+  showDAG: false,
+  highlightedFeatures: [],
+  graphNodes: [],
+  suggestedPrompts: []
+};
 
-    res.status(200).json(xaiExplanation);
+res.json(xaiExplanation);
   } catch (error) {
     console.error("OpenAI API Error:", error);
     res.status(500).json({ error: 'Failed to fetch from OpenAI API', details: error.message });
