@@ -13,6 +13,9 @@ app.post('/api/openai', async (req, res) => {
   }
 
   try {
+    const systemPrompt =
+      'You are an explainable AI assistant for a military command and control setting. Respond ONLY in JSON using this schema:\n{"explanationType":"insight | reasoning | projection","content":"..."}.';
+    
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -20,8 +23,11 @@ app.post('/api/openai', async (req, res) => {
         'Authorization': `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: 'gpt-3.5-turbo',
-        messages: [{ role: 'user', content: prompt }],
+        model: 'gpt-4',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: `User question: ${prompt}` }
+        ],
         temperature: 0,
       })
     });
@@ -32,7 +38,36 @@ app.post('/api/openai', async (req, res) => {
     }
 
     const data = await response.json();
-    res.json({ result: data.choices?.[0]?.message?.content || '' });
+    const content = data.choices?.[0]?.message?.content || '';
+
+    let parsed;
+    try {
+      parsed = JSON.parse(content);
+    } catch (err) {
+      console.error('Invalid JSON from OpenAI:', content);
+      return res.status(500).json({ error: 'Invalid response format from OpenAI.' });
+    }
+
+    const type = String(parsed.explanationType).toLowerCase();
+    if (!['insight', 'reasoning', 'projection'].includes(type) || typeof parsed.content !== 'string') {
+      console.error('Unexpected schema from OpenAI:', parsed);
+      return res.status(500).json({ error: 'Invalid response schema from OpenAI.' });
+    }
+
+    const xaiExplanation = {
+      defaultTab: type,
+      insight: type === 'insight' ? parsed.content : null,
+      reasoning: type === 'reasoning' ? parsed.content : null,
+      projection: type === 'projection' ? parsed.content : null,
+      confidence: null,
+      showShapChart: false,
+      showDAG: false,
+      highlightedFeatures: [],
+      graphNodes: [],
+      suggestedPrompts: []
+    };
+
+    res.json(xaiExplanation);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch from OpenAI API' });
   }
