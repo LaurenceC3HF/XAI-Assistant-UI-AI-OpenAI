@@ -25,7 +25,7 @@ export const AlternativeOutcomes: React.FC<AlternativeOutcomesProps> = ({
   };
 
   const getIconColor = (index: number) => {
-    const colors = ['text-amber-400', 'text-blue-400', 'text-purple-400'];
+    const colors = ['text-gray-400', 'text-gray-400', 'text-gray-400'];
     return colors[index % colors.length];
   };
 
@@ -53,8 +53,8 @@ export const AlternativeOutcomes: React.FC<AlternativeOutcomesProps> = ({
   return (
     <VisualCard>
       <div className="flex items-center mb-6">
-        <GitBranch className="w-6 h-6 text-purple-400 mr-3" />
-        <h3 className="text-lg font-semibold text-purple-300">
+        <GitBranch className="w-6 h-6 text-gray-400 mr-3" />
+        <h3 className="text-lg font-semibold text-gray-300">
           Alternative Scenario Outcomes
         </h3>
       </div>
@@ -72,7 +72,7 @@ export const AlternativeOutcomes: React.FC<AlternativeOutcomesProps> = ({
               <div className={`flex-shrink-0 mr-3 ${getIconColor(i)} group-hover:scale-110 transition-transform duration-200`}>
                 {getIcon(i)}
               </div>
-              <h4 className="font-semibold text-purple-300 group-hover:text-purple-200 transition-colors">
+              <h4 className="font-semibold text-gray-300 group-hover:text-gray-200 transition-colors">
                 {alt.title}
               </h4>
             </div>

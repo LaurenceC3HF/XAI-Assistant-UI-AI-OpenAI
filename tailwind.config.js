@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['"Roboto Mono"', '"Courier New"', 'monospace'],
+        sans: ['"Segoe UI Variable"', '"Segoe UI"', 'system-ui', 'sans-serif'],
+        mono: ['"Segoe UI Variable"', 'monospace'],
       },
       colors: {
         'intel-black': '#0d0d0d',

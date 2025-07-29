@@ -160,7 +160,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
       <div className="bg-intel-black border border-intel-gray rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div className="p-6 border-b border-intel-gray flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Activity className="w-6 h-6 text-intel-cyan" />
+            <Activity className="w-6 h-6 text-gray-400" />
             <h2 className="text-xl font-bold text-white">User Interaction Analytics</h2>
           </div>
           <button
@@ -230,7 +230,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
               {/* Tab Usage */}
               <VisualCard>
                 <div className="flex items-center mb-4">
-                  <Eye className="w-5 h-5 text-blue-400 mr-2" />
+                  <Eye className="w-5 h-5 text-gray-400 mr-2" />
                   <h3 className="text-lg font-semibold text-white">Tab Usage Distribution</h3>
                 </div>
                 <div className="space-y-3">
@@ -256,7 +256,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
               {/* Chat Engagement */}
               <VisualCard>
                 <div className="flex items-center mb-4">
-                  <MessageSquare className="w-5 h-5 text-green-400 mr-2" />
+                  <MessageSquare className="w-5 h-5 text-gray-400 mr-2" />
                   <h3 className="text-lg font-semibold text-white">Chat Engagement</h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -278,14 +278,14 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
               {/* Recent Interactions */}
               <VisualCard>
                 <div className="flex items-center mb-4">
-                  <Clock className="w-5 h-5 text-yellow-400 mr-2" />
+                  <Clock className="w-5 h-5 text-gray-400 mr-2" />
                   <h3 className="text-lg font-semibold text-white">Recent Interactions</h3>
                 </div>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {interactions.slice(-10).reverse().map((interaction, index) => (
                     <div key={interaction.id} className="bg-intel-gray/50 p-3 rounded-lg">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-medium text-blue-300">
+                        <span className="text-sm font-medium text-gray-300">
                           {interaction.type.replace('_', ' ').toUpperCase()}
                         </span>
                         <span className="text-xs text-gray-400">

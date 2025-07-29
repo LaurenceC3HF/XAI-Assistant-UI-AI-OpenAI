@@ -94,7 +94,7 @@ function App() {
   );
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-intel-black via-intel-gray to-intel-black text-intel-cyan font-mono overflow-hidden">
+    <div className="flex h-screen bg-gradient-to-br from-intel-black via-intel-gray to-intel-black text-intel-cyan font-sans overflow-hidden">
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         <Header activeTab={activeTab} onTabChange={handleTabChange} />
@@ -122,10 +122,8 @@ function App() {
       {/* Global Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
-          
           * {
-            font-family: 'Roboto Mono', 'Courier New', monospace;
+            font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
           }
           
           .scrollbar-thin::-webkit-scrollbar {
@@ -161,7 +159,7 @@ function App() {
           }
           
           .font-mono {
-            font-family: 'Roboto Mono', 'Courier New', monospace;
+            font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
           }
 
           /* Ensure proper text rendering */

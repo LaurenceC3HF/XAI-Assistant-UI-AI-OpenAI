@@ -19,8 +19,8 @@ export const ProjectionTab: React.FC<ProjectionTabProps> = ({
     <div className="space-y-8 animate-fade-in">
       <VisualCard>
         <div className="flex items-center mb-4">
-          <Activity className="w-6 h-6 text-purple-400 mr-3" />
-          <h3 className="text-lg font-semibold text-purple-300">
+          <Activity className="w-6 h-6 text-gray-400 mr-3" />
+          <h3 className="text-lg font-semibold text-gray-300">
             Highlights
           </h3>
         </div>

@@ -143,8 +143,8 @@ export const DAGVisual: React.FC<DAGVisualProps> = ({
   return (
     <VisualCard>
       <div className="flex items-center mb-6">
-        <GitBranch className="w-6 h-6 text-yellow-400 mr-3" />
-        <h3 className="text-lg font-semibold text-yellow-300">
+        <GitBranch className="w-6 h-6 text-gray-400 mr-3" />
+        <h3 className="text-lg font-semibold text-gray-300">
           Causal Decision Graph
         </h3>
       </div>
