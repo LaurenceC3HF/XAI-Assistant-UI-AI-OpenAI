@@ -42,7 +42,7 @@ export const COAComparison: React.FC<COAComparisonProps> = ({
           <div
             key={coa.id}
             className={`
-              relative bg-slate-900/60 border-2 rounded-lg p-4
+              relative border border-gray-600 bg-[#121212] p-4
               cursor-pointer
               ${getBorderColor(coa.id, coa.recommendationScore)}
             `}
