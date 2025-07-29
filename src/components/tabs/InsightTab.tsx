@@ -20,7 +20,7 @@ export const InsightTab: React.FC<InsightTabProps> = ({
   onCOAInteraction
 }) => {
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-8 animate-fade-in">
       <VisualCard>
         <div className="flex items-center mb-4">
           <Eye className="w-6 h-6 text-blue-400 mr-3" />
