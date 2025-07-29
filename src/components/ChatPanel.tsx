@@ -105,7 +105,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
           
           return (
             <div key={index} className={`flex ${isUser ? 'justify-end' : 'justify-start'}`}>
-              <div 
+              <div
                 onClick={() => !isUser && onHistoryClick(item)}
                 className={`
                   max-w-[85%] group transition-all duration-200
@@ -120,12 +120,16 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                     : 'bg-slate-700/80 hover:bg-slate-700 text-gray-100 mr-4'
                   }
                 `}>
+                  <div className={`flex items-center text-xs text-gray-400 ${isUser ? 'justify-end mb-2' : 'mb-2'}`}>
+                    <Clock className="w-3 h-3 mr-1" />
+                    {formatTime(item.timestamp)}
+                  </div>
                   {/* Small tab dot indicator for AI responses */}
                   {!isUser && dotInfo && (
                     <span
                       className={`absolute top-2 right-2 flex items-center group`}
                     >
-                      <span 
+                      <span
                         className={`w-2 h-2 rounded-full ${dotInfo.color} border border-white/60 shadow`}
                         title={dotInfo.label}
                       />
@@ -147,11 +151,6 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                     </p>
                   </div>
                 </div>
-                
-                <div className={`flex items-center mt-1 text-xs text-gray-500 ${isUser ? 'justify-end mr-4' : 'ml-4'}`}>
-                  <Clock className="w-3 h-3 mr-1" />
-                  {formatTime(item.timestamp)}
-                </div>
               </div>
             </div>
           );
@@ -159,7 +158,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
         
         {isLoading && (
           <div className="flex justify-start">
-            <div className="bg-slate-700/80 p-4 rounded-lg mr-4 max-w-[85%]">
+            <div className="bg-[#1e1e1e] p-4 mr-4 max-w-[85%]">
               <div className="flex items-center space-x-2">
                 <Bot className="w-4 h-4 text-intel-cyan" />
                 <div className="flex space-x-1">
@@ -167,7 +166,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                   <div className="w-2 h-2 bg-intel-cyan rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
                   <div className="w-2 h-2 bg-intel-cyan rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                 </div>
-                <span className="text-sm text-gray-300">AI is analyzing...</span>
+                <span className="text-sm text-gray-200">AI is analyzing...</span>
               </div>
             </div>
           </div>
@@ -186,7 +185,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                   key={i}
                   onClick={() => setUserInput(prompt)}
                   disabled={isLoading}
-                  className="px-3 py-1 bg-slate-700/50 hover:bg-slate-600/50 text-xs text-gray-300 hover:text-white rounded-full transition-all duration-200 border border-slate-600/50 hover:border-slate-500/50"
+                  className="px-3 py-1 bg-slate-700/50 hover:bg-slate-600/50 text-xs text-gray-200 hover:text-white rounded-full transition-all duration-200 border border-slate-600/50 hover:border-slate-500/50"
                 >
                   {prompt}
                 </button>
@@ -204,7 +203,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
               onKeyDown={handleKeyDown}
               disabled={isLoading}
               rows={3}
-              className="w-full bg-transparent text-white placeholder-gray-400 p-3 focus:outline-none resize-none scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-transparent"
+              className="w-full bg-transparent text-white placeholder-gray-400 p-3 focus:outline-none resize-none scrollbar-thin scrollbar-thumb-slate-600 scrollbar-track-transparent font-mono"
               placeholder="Ask about the analysis..."
             />
           </div>

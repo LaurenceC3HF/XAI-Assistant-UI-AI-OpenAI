@@ -236,7 +236,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
                 <div className="space-y-3">
                   {Object.entries(analytics.tabUsageDistribution).map(([tab, count]) => (
                     <div key={tab} className="flex items-center justify-between">
-                      <span className="text-gray-300 capitalize">{tab}</span>
+                      <span className="text-gray-200 capitalize">{tab}</span>
                       <div className="flex items-center space-x-2">
                         <div className="w-32 bg-intel-gray rounded-full h-2">
                           <div
@@ -293,12 +293,12 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
                         </span>
                       </div>
                       {interaction.data.message && (
-                        <div className="text-xs text-gray-300 truncate">
+                        <div className="text-xs text-gray-200 truncate">
                           Message: "{interaction.data.message}"
                         </div>
                       )}
                       {interaction.data.fromTab && interaction.data.toTab && (
-                        <div className="text-xs text-gray-300">
+                        <div className="text-xs text-gray-200">
                           Tab: {interaction.data.fromTab} → {interaction.data.toTab}
                         </div>
                       )}

@@ -82,6 +82,14 @@ export const MainContent: React.FC<MainContentProps> = ({
     }
   };
 
+  const confidenceBar = React.useMemo(() => {
+    if (!explanation.confidence) return null;
+    const filled = Math.round(explanation.confidence / 10);
+    const empty = 10 - filled;
+    const bar = '█'.repeat(filled) + '░'.repeat(empty);
+    return `${bar} ${explanation.confidence}%`;
+  }, [explanation.confidence]);
+
   return (
     <main className="flex-1 overflow-y-auto p-6 bg-gradient-to-br from-intel-black via-intel-gray to-intel-black">
       <div className="max-w-7xl mx-auto">
@@ -106,7 +114,7 @@ export const MainContent: React.FC<MainContentProps> = ({
             </div>
           )}
         </div>
-        
+
         <div role="tabpanel" id={`${activeTab}-panel`} aria-labelledby={`${activeTab}-tab`}>
           {renderTabContent()}
         </div>
