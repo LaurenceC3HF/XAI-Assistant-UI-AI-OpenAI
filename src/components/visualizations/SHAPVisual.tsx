@@ -125,10 +125,7 @@ export const SHAPVisual: React.FC<SHAPVisualProps> = ({
                     style={{ width: `${(Math.abs(value) / maxAbsValue) * 100}%` }}
                     className={`
                       h-full transition-all duration-500 ease-out
-                      ${value > 0
-                        ? 'bg-gradient-to-r from-green-500 to-green-400'
-                        : 'bg-gradient-to-r from-red-500 to-red-400'
-                      }
+                      ${value > 0 ? 'bg-green-700' : 'bg-red-600'}
                     `}
                   />
                 </div>
