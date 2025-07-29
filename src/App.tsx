@@ -126,19 +126,25 @@ function App() {
             font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
           }
           
+          .scrollbar-thin {
+            scrollbar-width: thin;
+            scrollbar-color: #475569 #121212;
+          }
+
           .scrollbar-thin::-webkit-scrollbar {
             width: 6px;
+            height: 6px;
           }
-          
+
           .scrollbar-thin::-webkit-scrollbar-track {
-            background: transparent;
+            background: #121212;
           }
-          
+
           .scrollbar-thin::-webkit-scrollbar-thumb {
             background-color: #475569;
             border-radius: 0;
           }
-          
+
           .scrollbar-thin::-webkit-scrollbar-thumb:hover {
             background-color: #64748b;
           }

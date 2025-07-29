@@ -91,7 +91,7 @@ export const MainContent: React.FC<MainContentProps> = ({
   }, [explanation.confidence]);
 
   return (
-    <main className="flex-1 overflow-y-auto p-6 bg-gradient-to-br from-intel-black via-intel-gray to-intel-black">
+    <main className="flex-1 overflow-y-auto p-6 bg-gradient-to-br from-intel-black via-intel-gray to-intel-black scrollbar-thin">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-white mb-2 leading-tight">
