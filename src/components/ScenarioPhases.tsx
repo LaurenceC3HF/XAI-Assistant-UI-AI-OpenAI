@@ -16,22 +16,30 @@ export const ScenarioPhases: React.FC<ScenarioPhasesProps> = ({ phases }) => {
           Mission Timeline & Phases
         </h3>
       </div>
-      
+
+      {/* Horizontal progression bar with labels */}
+      <div className="mb-8 flex items-center justify-between">
+        {phases.map((phase, index) => (
+          <div key={index} className="flex flex-col items-center flex-1">
+            <div className="flex items-center w-full">
+              {index > 0 && <div className="flex-1 h-1 bg-slate-600" />}
+              <div className="w-3 h-3 bg-blue-500" />
+              {index < phases.length - 1 && <div className="flex-1 h-1 bg-slate-600" />}
+            </div>
+            <span className="mt-2 text-xs text-gray-300 whitespace-nowrap">
+              {phase.phase}
+            </span>
+          </div>
+        ))}
+      </div>
+
       <div className="space-y-6">
         {phases.map((phase, index) => (
           <div key={index} className="relative">
-            {/* Phase Header */}
-            <div className="flex items-center mb-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm mr-4">
-                {index + 1}
-              </div>
-              <h4 className="text-lg font-semibold text-white">
-                {phase.phase}
-              </h4>
-            </div>
-            
-            {/* Actions List */}
-            <div className="ml-12 space-y-2">
+            <h4 className="text-lg font-semibold text-white mb-2">
+              {phase.phase}
+            </h4>
+            <div className="ml-4 space-y-2">
               {phase.actions.map((action, actionIndex) => {
                 const isXAIActivation = action.includes('XAI Panel');
                 return (
@@ -39,8 +47,8 @@ export const ScenarioPhases: React.FC<ScenarioPhasesProps> = ({ phases }) => {
                     key={actionIndex}
                     className={`
                       flex items-start p-3 rounded-lg transition-all duration-200
-                      ${isXAIActivation 
-                        ? 'bg-amber-500/20 border border-amber-500/50 text-amber-200' 
+                      ${isXAIActivation
+                        ? 'bg-amber-500/20 border border-amber-500/50 text-amber-200'
                         : 'bg-slate-800/50 hover:bg-slate-800/70 text-gray-300'
                       }
                     `}
@@ -59,11 +67,6 @@ export const ScenarioPhases: React.FC<ScenarioPhasesProps> = ({ phases }) => {
                 );
               })}
             </div>
-            
-            {/* Connector Line */}
-            {index < phases.length - 1 && (
-              <div className="absolute left-4 top-12 w-0.5 h-8 bg-slate-600"></div>
-            )}
           </div>
         ))}
       </div>

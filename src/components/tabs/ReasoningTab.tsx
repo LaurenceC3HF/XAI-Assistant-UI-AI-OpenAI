@@ -17,7 +17,7 @@ export const ReasoningTab: React.FC<ReasoningTabProps> = ({
   onVisualizationClick
 }) => {
   return (
-    <div className="space-y-6 animate-fade-in">
+    <div className="space-y-8 animate-fade-in">
       {/* Put summary and SHAP side-by-side */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <VisualCard>
