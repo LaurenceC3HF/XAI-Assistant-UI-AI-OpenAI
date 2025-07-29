@@ -84,8 +84,8 @@ export const SHAPVisual: React.FC<SHAPVisualProps> = ({
   return (
     <VisualCard>
       <div className="flex items-center mb-6">
-        <TrendingUp className="w-6 h-6 text-teal-400 mr-3" />
-        <h3 className="text-lg font-semibold text-teal-300">
+        <TrendingUp className="w-6 h-6 text-gray-400 mr-3" />
+        <h3 className="text-lg font-semibold text-gray-300">
           SHAP Feature Importance
         </h3>
       </div>
@@ -110,11 +110,11 @@ export const SHAPVisual: React.FC<SHAPVisualProps> = ({
                   </span>
                   <div className="flex items-center">
                     {value > 0 ? (
-                      <TrendingUp className="w-4 h-4 text-green-400 mr-1" />
+                      <TrendingUp className="w-4 h-4 text-gray-400 mr-1" />
                     ) : (
-                      <TrendingDown className="w-4 h-4 text-red-400 mr-1" />
+                      <TrendingDown className="w-4 h-4 text-gray-400 mr-1" />
                     )}
-                    <span className={`text-sm font-bold ${value > 0 ? 'text-green-400' : 'text-red-400'}`}>
+                    <span className="text-sm font-bold text-gray-400">
                       {value.toFixed(2)}
                     </span>
                   </div>
@@ -140,7 +140,7 @@ export const SHAPVisual: React.FC<SHAPVisualProps> = ({
 
       {active && (
         <div className="mt-6 p-4 rounded-lg bg-slate-800/70 border border-slate-600/50 text-sm space-y-1">
-          <p className="text-teal-300 font-semibold">{active}</p>
+          <p className="text-gray-300 font-semibold">{active}</p>
           <p className="text-gray-200">{featureMeta[active]?.desc}</p>
           <p className="text-gray-400 text-xs">{featureMeta[active]?.why}</p>
           <p className="text-gray-400 text-xs">Importance score: {shapData[active]?.toFixed(2)}</p>

@@ -23,8 +23,8 @@ export const InsightTab: React.FC<InsightTabProps> = ({
     <div className="space-y-8 animate-fade-in">
       <VisualCard>
         <div className="flex items-center mb-4">
-          <Eye className="w-6 h-6 text-blue-400 mr-3" />
-          <h3 className="text-lg font-semibold text-blue-300">
+          <Eye className="w-6 h-6 text-gray-400 mr-3" />
+          <h3 className="text-lg font-semibold text-gray-300">
             Highlights
           </h3>
         </div>

@@ -11,8 +11,8 @@ export const ScenarioPhases: React.FC<ScenarioPhasesProps> = ({ phases }) => {
   return (
     <VisualCard>
       <div className="flex items-center mb-6">
-        <Clock className="w-6 h-6 text-blue-400 mr-3" />
-        <h3 className="text-lg font-semibold text-blue-300">
+        <Clock className="w-6 h-6 text-gray-400 mr-3" />
+        <h3 className="text-lg font-semibold text-gray-300">
           Mission Timeline & Phases
         </h3>
       </div>
@@ -48,16 +48,16 @@ export const ScenarioPhases: React.FC<ScenarioPhasesProps> = ({ phases }) => {
                     className={`
                       flex items-start p-3 rounded-lg transition-all duration-200
                       ${isXAIActivation
-                        ? 'bg-amber-500/20 border border-amber-500/50 text-amber-200'
+                        ? 'bg-amber-500/20 border border-amber-500/50 text-gray-200'
                         : 'bg-slate-800/50 hover:bg-slate-800/70 text-gray-300'
                       }
                     `}
                   >
                     <div className="flex-shrink-0 mr-3 mt-0.5">
                       {isXAIActivation ? (
-                        <AlertCircle className="w-4 h-4 text-amber-400" />
+                        <AlertCircle className="w-4 h-4 text-gray-400" />
                       ) : (
-                        <CheckCircle className="w-4 h-4 text-green-400" />
+                        <CheckCircle className="w-4 h-4 text-gray-400" />
                       )}
                     </div>
                     <span className={`text-sm leading-relaxed ${isXAIActivation ? 'font-semibold' : ''}`}>

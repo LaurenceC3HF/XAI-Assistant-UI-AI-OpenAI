@@ -21,11 +21,11 @@ export const ReasoningTab: React.FC<ReasoningTabProps> = ({
       {/* Put summary and SHAP side-by-side */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         <VisualCard>
-          <div className="flex items-center mb-4">
-            <BrainCircuit className="w-6 h-6 text-yellow-400 mr-3" />
-            <h3 className="text-lg font-semibold text-yellow-300">
-              Highlights
-            </h3>
+        <div className="flex items-center mb-4">
+          <BrainCircuit className="w-6 h-6 text-gray-400 mr-3" />
+          <h3 className="text-lg font-semibold text-gray-300">
+            Highlights
+          </h3>
           </div>
           <p className="text-gray-200 leading-relaxed whitespace-pre-wrap">
             {explanation.reasoning?.text}

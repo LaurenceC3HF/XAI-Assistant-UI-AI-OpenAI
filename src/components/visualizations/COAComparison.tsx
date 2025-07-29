@@ -59,7 +59,7 @@ export const COAComparison: React.FC<COAComparisonProps> = ({
             
             <div className="flex items-start justify-between mb-3">
               <div className="flex items-center">
-                <Target className="w-5 h-5 text-blue-400 mr-2" />
+                <Target className="w-5 h-5 text-gray-400 mr-2" />
                 <h4 className="font-bold text-white text-sm">{coa.name}</h4>
               </div>
               <div className={`px-2 py-1 rounded-full text-xs font-bold ${getScoreColor(coa.recommendationScore)}`}>
@@ -74,14 +74,14 @@ export const COAComparison: React.FC<COAComparisonProps> = ({
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-gray-400">Risk:</span>
-                <span className="text-xs font-semibold text-red-400 flex items-center">
+                <span className="text-xs font-semibold text-gray-400 flex items-center">
                   <AlertTriangle className="w-3 h-3 mr-1" />
                   {coa.risk}
                 </span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-xs text-gray-400">Reward:</span>
-                <span className="text-xs font-semibold text-green-400 flex items-center">
+                <span className="text-xs font-semibold text-gray-400 flex items-center">
                   <CheckCircle className="w-3 h-3 mr-1" />
                   {coa.reward}
                 </span>

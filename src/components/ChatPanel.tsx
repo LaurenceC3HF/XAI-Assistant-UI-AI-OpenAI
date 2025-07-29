@@ -68,16 +68,16 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
       {/* Header */}
       <header className="p-4 border-b border-intel-gray flex-shrink-0">
         <div className="flex items-center justify-center space-x-3">
-          <MessageSquare className="w-6 h-6 text-intel-cyan" />
-          <h1 className="text-xl font-bold text-intel-cyan">XAI Assistant</h1>
+          <MessageSquare className="w-6 h-6 text-gray-400" />
+          <h1 className="text-xl font-bold text-gray-400">XAI Assistant</h1>
         </div>
         {error && (
           <div className="mt-3 p-3 bg-intel-red/20 border border-intel-red/50 rounded-lg flex items-center">
-            <AlertCircle className="w-4 h-4 text-intel-red mr-2 flex-shrink-0" />
-            <span className="text-intel-red text-sm">{error}</span>
+            <AlertCircle className="w-4 h-4 text-gray-400 mr-2 flex-shrink-0" />
+            <span className="text-gray-400 text-sm">{error}</span>
             <button
               onClick={onClearError}
-              className="ml-auto text-intel-red hover:text-intel-red/80"
+              className="ml-auto text-gray-400 hover:text-gray-300"
             >
               ×
             </button>
@@ -143,7 +143,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                       {isUser ? (
                         <User className="w-4 h-4" />
                       ) : (
-                        <Bot className="w-4 h-4 text-intel-cyan" />
+                        <Bot className="w-4 h-4 text-gray-400" />
                       )}
                     </div>
                     <p className="text-sm leading-relaxed flex-1">
@@ -160,7 +160,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
           <div className="flex justify-start">
             <div className="bg-[#1e1e1e] p-4 mr-4 max-w-[85%]">
               <div className="flex items-center space-x-2">
-                <Bot className="w-4 h-4 text-intel-cyan" />
+                <Bot className="w-4 h-4 text-gray-400" />
                 <div className="flex space-x-1">
                   <div className="w-2 h-2 bg-intel-cyan rounded-full animate-bounce" />
                   <div className="w-2 h-2 bg-intel-cyan rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
