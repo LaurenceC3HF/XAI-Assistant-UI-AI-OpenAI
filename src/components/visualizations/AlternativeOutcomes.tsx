@@ -77,7 +77,7 @@ export const AlternativeOutcomes: React.FC<AlternativeOutcomesProps> = ({
               </h4>
             </div>
             
-            <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">
+            <p className="text-sm text-gray-200 leading-relaxed group-hover:text-gray-100 transition-colors">
               {alt.details}
             </p>
           </div>

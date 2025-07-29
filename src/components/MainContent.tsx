@@ -83,7 +83,7 @@ export const MainContent: React.FC<MainContentProps> = ({
   };
 
   return (
-    <main className="flex-1 overflow-y-auto p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <main className="flex-1 overflow-y-auto p-6 bg-[#121212]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-white mb-2 leading-tight">

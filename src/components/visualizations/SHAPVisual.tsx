@@ -105,7 +105,7 @@ export const SHAPVisual: React.FC<SHAPVisualProps> = ({
                 onClick={() => handleFeatureClick(feature)}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-medium text-gray-300 group-hover:text-white transition-colors">
+                  <span className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">
                     {feature}
                   </span>
                   <div className="flex items-center">
@@ -141,9 +141,9 @@ export const SHAPVisual: React.FC<SHAPVisualProps> = ({
       {active && (
         <div className="mt-6 p-4 rounded-lg bg-slate-800/70 border border-slate-600/50 text-sm space-y-1">
           <p className="text-teal-300 font-semibold">{active}</p>
-          <p className="text-gray-300">{featureMeta[active]?.desc}</p>
+          <p className="text-gray-200">{featureMeta[active]?.desc}</p>
           <p className="text-gray-400 text-xs">{featureMeta[active]?.why}</p>
-          <p className="text-gray-500 text-xs">Importance score: {shapData[active]?.toFixed(2)}</p>
+          <p className="text-gray-400 text-xs">Importance score: {shapData[active]?.toFixed(2)}</p>
         </div>
       )}
     </VisualCard>
