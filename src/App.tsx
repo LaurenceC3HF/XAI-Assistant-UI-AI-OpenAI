@@ -93,8 +93,8 @@ function App() {
     />
   );
 
-  return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-gray-300 font-inter overflow-hidden">
+    return (
+      <div className="flex h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-gray-300 font-mono overflow-hidden">
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         <Header activeTab={activeTab} onTabChange={handleTabChange} />
@@ -122,10 +122,10 @@ function App() {
       {/* Global Styles */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+          /* Use Segoe UI Variable if available */
           
           * {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
           }
           
           .scrollbar-thin::-webkit-scrollbar {
@@ -160,8 +160,8 @@ function App() {
             }
           }
           
-          .font-inter {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+          .font-mono {
+            font-family: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
           }
 
           /* Ensure proper text rendering */
