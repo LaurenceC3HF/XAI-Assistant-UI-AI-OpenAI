@@ -136,7 +136,7 @@ function App() {
           
           .scrollbar-thin::-webkit-scrollbar-thumb {
             background-color: #475569;
-            border-radius: 3px;
+            border-radius: 0;
           }
           
           .scrollbar-thin::-webkit-scrollbar-thumb:hover {
