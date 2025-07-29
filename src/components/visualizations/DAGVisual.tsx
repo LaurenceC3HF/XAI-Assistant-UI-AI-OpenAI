@@ -241,7 +241,7 @@ export const DAGVisual: React.FC<DAGVisualProps> = ({
                     <p className="mb-1">{nodeInfo[node.id]?.desc}</p>
                     <p className="text-gray-400 mb-1">{nodeInfo[node.id]?.why}</p>
                     {nodeInfo[node.id]?.whatIf && (
-                      <p className="text-gray-500 italic">What if: {nodeInfo[node.id]?.whatIf}</p>
+                      <p className="text-gray-400 italic">What if: {nodeInfo[node.id]?.whatIf}</p>
                     )}
                   </div>
                 )}

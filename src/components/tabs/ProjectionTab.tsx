@@ -24,7 +24,7 @@ export const ProjectionTab: React.FC<ProjectionTabProps> = ({
             Highlights
           </h3>
         </div>
-        <p className="text-gray-300 leading-relaxed whitespace-pre-wrap">
+        <p className="text-gray-200 leading-relaxed whitespace-pre-wrap">
           {explanation.projection?.text}
         </p>
       </VisualCard>
