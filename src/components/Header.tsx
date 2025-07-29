@@ -9,9 +9,9 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
   return (
-    <header className="flex-shrink-0 bg-slate-800/90 backdrop-blur-sm shadow-lg border-b border-slate-700/50">
+    <header className="flex-shrink-0 bg-intel-gray/90 backdrop-blur-sm shadow-lg border-b border-intel-gray">
       <div className="flex justify-center items-center px-6 py-4">
-        <nav className="flex space-x-1 bg-slate-900/50 rounded-lg p-1" role="tablist">
+        <nav className="flex space-x-1 bg-intel-black/50 rounded-lg p-1" role="tablist">
           {TABS.map(tab => (
             <button
               key={tab.id}
@@ -22,16 +22,16 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onTabChange }) => {
               className={`
                 relative px-6 py-3 font-semibold text-sm tracking-wide rounded-md
                 transition-all duration-${ANIMATION_DURATION} ease-in-out
-                focus:outline-none focus:ring-2 focus:ring-blue-500/50
+                focus:outline-none focus:ring-2 focus:ring-intel-cyan/50
                 ${activeTab === tab.id
-                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25 transform scale-105'
-                  : 'text-gray-400 hover:text-white hover:bg-slate-700/50'
+                  ? 'bg-intel-cyan text-intel-black shadow-lg shadow-intel-cyan/25 transform scale-105'
+                  : 'text-intel-cyan/60 hover:text-intel-cyan hover:bg-intel-black/50'
                 }
               `}
             >
               {tab.label}
               {activeTab === tab.id && (
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 rounded-md opacity-80 -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-intel-cyan to-intel-cyan/80 rounded-md opacity-80 -z-10" />
               )}
             </button>
           ))}

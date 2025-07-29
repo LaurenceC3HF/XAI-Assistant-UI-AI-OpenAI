@@ -4,8 +4,8 @@ import { Send, MessageSquare, AlertCircle, User, Bot, Clock, Info } from 'lucide
 
 // Tab indicator mapping (colors match previous chip scheme)
 const TAB_DOT = {
-  insight: { color: "bg-blue-500", label: "Insight" },
-  reasoning: { color: "bg-yellow-400", label: "Reasoning" },
+  insight: { color: "bg-intel-cyan", label: "Insight" },
+  reasoning: { color: "bg-intel-yellow", label: "Reasoning" },
   projection: { color: "bg-purple-500", label: "Projection" }
 };
 
@@ -64,20 +64,20 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
   };
 
   return (
-    <div className="w-1/3 flex flex-col border-l border-slate-700/50 bg-slate-900/80 backdrop-blur-sm">
+    <div className="w-1/3 flex flex-col border-l border-intel-gray bg-intel-black/80 backdrop-blur-sm">
       {/* Header */}
-      <header className="p-4 border-b border-slate-700/50 flex-shrink-0">
+      <header className="p-4 border-b border-intel-gray flex-shrink-0">
         <div className="flex items-center justify-center space-x-3">
-          <MessageSquare className="w-6 h-6 text-blue-400" />
-          <h1 className="text-xl font-bold text-white">XAI Assistant</h1>
+          <MessageSquare className="w-6 h-6 text-intel-cyan" />
+          <h1 className="text-xl font-bold text-intel-cyan">XAI Assistant</h1>
         </div>
         {error && (
-          <div className="mt-3 p-3 bg-red-500/20 border border-red-500/50 rounded-lg flex items-center">
-            <AlertCircle className="w-4 h-4 text-red-400 mr-2 flex-shrink-0" />
-            <span className="text-red-300 text-sm">{error}</span>
-            <button 
+          <div className="mt-3 p-3 bg-intel-red/20 border border-intel-red/50 rounded-lg flex items-center">
+            <AlertCircle className="w-4 h-4 text-intel-red mr-2 flex-shrink-0" />
+            <span className="text-intel-red text-sm">{error}</span>
+            <button
               onClick={onClearError}
-              className="ml-auto text-red-400 hover:text-red-300"
+              className="ml-auto text-intel-red hover:text-intel-red/80"
             >
               ×
             </button>
@@ -116,7 +116,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                 <div className={`
                   p-4 rounded-lg shadow-lg
                   ${isUser 
-                    ? 'bg-blue-600 text-white ml-4' 
+                    ? 'bg-intel-cyan text-intel-black ml-4'
                     : 'bg-slate-700/80 hover:bg-slate-700 text-gray-100 mr-4'
                   }
                 `}>
@@ -139,7 +139,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                       {isUser ? (
                         <User className="w-4 h-4" />
                       ) : (
-                        <Bot className="w-4 h-4 text-blue-400" />
+                        <Bot className="w-4 h-4 text-intel-cyan" />
                       )}
                     </div>
                     <p className="text-sm leading-relaxed flex-1">
@@ -161,11 +161,11 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
           <div className="flex justify-start">
             <div className="bg-slate-700/80 p-4 rounded-lg mr-4 max-w-[85%]">
               <div className="flex items-center space-x-2">
-                <Bot className="w-4 h-4 text-blue-400" />
+                <Bot className="w-4 h-4 text-intel-cyan" />
                 <div className="flex space-x-1">
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" />
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
+                  <div className="w-2 h-2 bg-intel-cyan rounded-full animate-bounce" />
+                  <div className="w-2 h-2 bg-intel-cyan rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
+                  <div className="w-2 h-2 bg-intel-cyan rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                 </div>
                 <span className="text-sm text-gray-300">AI is analyzing...</span>
               </div>
@@ -197,7 +197,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
         
         {/* Input */}
         <div className="flex items-end space-x-2">
-          <div className="flex-1 bg-slate-800/50 border border-slate-600/50 rounded-lg focus-within:border-blue-500/50 transition-colors">
+          <div className="flex-1 bg-slate-800/50 border border-slate-600/50 rounded-lg focus-within:border-intel-cyan/50 transition-colors">
             <textarea
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
@@ -211,7 +211,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
           <button
             onClick={handleSend}
             disabled={isLoading || !userInput.trim()}
-            className="flex-shrink-0 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-700 disabled:cursor-not-allowed text-white p-3 rounded-lg transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
+            className="flex-shrink-0 bg-intel-cyan hover:bg-intel-cyan/80 disabled:bg-intel-gray disabled:cursor-not-allowed text-intel-black p-3 rounded-lg transition-all duration-200 hover:scale-105 disabled:hover:scale-100"
           >
             <Send className="w-5 h-5" />
           </button>
