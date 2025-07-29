@@ -67,7 +67,7 @@ export const COAComparison: React.FC<COAComparisonProps> = ({
               </div>
             </div>
             
-            <p className="text-xs text-gray-300 mb-4 leading-relaxed">
+            <p className="text-xs text-gray-200 mb-4 leading-relaxed">
               {coa.summary}
             </p>
             
