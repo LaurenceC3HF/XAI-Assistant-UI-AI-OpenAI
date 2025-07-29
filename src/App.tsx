@@ -94,7 +94,7 @@ function App() {
   );
 
   return (
-    <div className="flex h-screen bg-[#121212] text-gray-200 font-mono overflow-hidden">
+    <div className="flex h-screen bg-gradient-to-br from-intel-black via-intel-gray to-intel-black text-intel-cyan font-mono overflow-hidden">
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col min-w-0">
         <Header activeTab={activeTab} onTabChange={handleTabChange} />

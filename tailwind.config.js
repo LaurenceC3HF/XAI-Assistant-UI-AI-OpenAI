@@ -6,6 +6,13 @@ export default {
       fontFamily: {
         mono: ['"Roboto Mono"', '"Courier New"', 'monospace'],
       },
+      colors: {
+        'intel-black': '#0d0d0d',
+        'intel-gray': '#121212',
+        'intel-cyan': '#00ccff',
+        'intel-red': '#cc4444',
+        'intel-yellow': '#e0b000',
+      },
     },
   },
   plugins: [],

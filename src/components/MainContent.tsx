@@ -91,16 +91,27 @@ export const MainContent: React.FC<MainContentProps> = ({
   }, [explanation.confidence]);
 
   return (
-    <main className="flex-1 overflow-y-auto p-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <div>
+    <main className="flex-1 overflow-y-auto p-6 bg-gradient-to-br from-intel-black via-intel-gray to-intel-black">
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-8">
           <h2 className="text-3xl font-bold text-white mb-2 leading-tight">
             {explanation.response || "Select an analysis from the chat history"}
           </h2>
           {explanation.confidence && (
-            <p className="text-sm text-gray-400 font-mono">
-              Confidence Level: <span className="text-white">{confidenceBar}</span>
-            </p>
+            <div className="flex items-center space-x-3">
+              <span className="text-sm text-gray-400">Confidence Level:</span>
+              <div className="flex items-center bg-intel-gray/50 rounded-full px-3 py-1">
+                <div className="w-16 bg-intel-gray rounded-full h-2 mr-2">
+                  <div 
+                    className="bg-gradient-to-r from-blue-500 to-green-500 h-2 rounded-full transition-all duration-500"
+                    style={{ width: `${explanation.confidence}%` }}
+                  />
+                </div>
+                <span className="text-sm font-semibold text-white">
+                  {explanation.confidence}%
+                </span>
+              </div>
+            </div>
           )}
         </div>
 

@@ -147,7 +147,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
     return (
       <button
         onClick={() => setIsVisible(true)}
-        className="fixed top-4 left-4 bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-full shadow-lg transition-all duration-200 z-50"
+        className="fixed top-4 left-4 bg-intel-cyan hover:bg-intel-cyan/80 text-intel-black p-3 rounded-full shadow-lg transition-all duration-200 z-50"
         title="View Interaction Analytics"
       >
         <BarChart3 className="w-5 h-5" />
@@ -157,10 +157,10 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-slate-900 border border-slate-700 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-        <div className="p-6 border-b border-slate-700 flex items-center justify-between">
+      <div className="bg-intel-black border border-intel-gray rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="p-6 border-b border-intel-gray flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <Activity className="w-6 h-6 text-purple-400" />
+            <Activity className="w-6 h-6 text-intel-cyan" />
             <h2 className="text-xl font-bold text-white">User Interaction Analytics</h2>
           </div>
           <button
@@ -201,21 +201,21 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <div className="bg-slate-800/50 p-3 rounded-lg">
+              <div className="bg-intel-gray/50 p-3 rounded-lg">
                 <div className="text-sm text-gray-400">Session ID</div>
                 <div className="text-white font-mono text-xs">{sessionId.slice(-8)}</div>
               </div>
-              <div className="bg-slate-800/50 p-3 rounded-lg">
+              <div className="bg-intel-gray/50 p-3 rounded-lg">
                 <div className="text-sm text-gray-400">Total Interactions</div>
                 <div className="text-white font-bold">{interactions.length}</div>
               </div>
-              <div className="bg-slate-800/50 p-3 rounded-lg">
+              <div className="bg-intel-gray/50 p-3 rounded-lg">
                 <div className="text-sm text-gray-400">Duration</div>
                 <div className="text-white font-bold">
                   {analytics ? formatDuration(analytics.averageSessionDuration) : '0s'}
                 </div>
               </div>
-              <div className="bg-slate-800/50 p-3 rounded-lg">
+              <div className="bg-intel-gray/50 p-3 rounded-lg">
                 <div className="text-sm text-gray-400">Most Common Action</div>
                 <div className="text-white font-bold text-xs">
                   {analytics?.mostCommonInteractionType.replace('_', ' ').toUpperCase()}
@@ -238,7 +238,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
                     <div key={tab} className="flex items-center justify-between">
                       <span className="text-gray-200 capitalize">{tab}</span>
                       <div className="flex items-center space-x-2">
-                        <div className="w-32 bg-slate-700 rounded-full h-2">
+                        <div className="w-32 bg-intel-gray rounded-full h-2">
                           <div
                             className="bg-blue-500 h-2 rounded-full transition-all duration-500"
                             style={{ 
@@ -260,15 +260,15 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
                   <h3 className="text-lg font-semibold text-white">Chat Engagement</h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-slate-800/50 p-3 rounded-lg">
+                  <div className="bg-intel-gray/50 p-3 rounded-lg">
                     <div className="text-sm text-gray-400">Messages Sent</div>
                     <div className="text-white font-bold">{analytics.chatEngagementMetrics.averageMessagesPerSession}</div>
                   </div>
-                  <div className="bg-slate-800/50 p-3 rounded-lg">
+                  <div className="bg-intel-gray/50 p-3 rounded-lg">
                     <div className="text-sm text-gray-400">Avg Message Length</div>
                     <div className="text-white font-bold">{Math.round(analytics.chatEngagementMetrics.averageMessageLength)} chars</div>
                   </div>
-                  <div className="bg-slate-800/50 p-3 rounded-lg">
+                  <div className="bg-intel-gray/50 p-3 rounded-lg">
                     <div className="text-sm text-gray-400">Suggested Prompt Usage</div>
                     <div className="text-white font-bold">{Math.round(analytics.chatEngagementMetrics.suggestedPromptUsageRate)}%</div>
                   </div>
@@ -283,7 +283,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
                 </div>
                 <div className="space-y-2 max-h-64 overflow-y-auto">
                   {interactions.slice(-10).reverse().map((interaction, index) => (
-                    <div key={interaction.id} className="bg-slate-800/50 p-3 rounded-lg">
+                    <div key={interaction.id} className="bg-intel-gray/50 p-3 rounded-lg">
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-sm font-medium text-blue-300">
                           {interaction.type.replace('_', ' ').toUpperCase()}
