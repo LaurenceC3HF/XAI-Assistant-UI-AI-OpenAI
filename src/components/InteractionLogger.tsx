@@ -157,7 +157,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-intel-black border border-intel-gray rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-intel-black border border-intel-gray rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto scrollbar-thin">
         <div className="p-6 border-b border-intel-gray flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <Activity className="w-6 h-6 text-gray-400" />
@@ -281,7 +281,7 @@ export const InteractionLogger: React.FC<InteractionLoggerProps> = ({
                   <Clock className="w-5 h-5 text-gray-400 mr-2" />
                   <h3 className="text-lg font-semibold text-white">Recent Interactions</h3>
                 </div>
-                <div className="space-y-2 max-h-64 overflow-y-auto">
+                <div className="space-y-2 max-h-64 overflow-y-auto scrollbar-thin">
                   {interactions.slice(-10).reverse().map((interaction, index) => (
                     <div key={interaction.id} className="bg-intel-gray/50 p-3 rounded-lg">
                       <div className="flex items-center justify-between mb-1">
