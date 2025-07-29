@@ -148,7 +148,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                   </div>
                 </div>
                 
-                <div className={`flex items-center mt-1 text-xs text-gray-500 ${isUser ? 'justify-end mr-4' : 'ml-4'}`}>
+                <div className={`flex items-center mt-1 text-xs text-gray-400 ${isUser ? 'justify-end mr-4' : 'ml-4'}`}>
                   <Clock className="w-3 h-3 mr-1" />
                   {formatTime(item.timestamp)}
                 </div>
@@ -167,7 +167,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                   <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }} />
                   <div className="w-2 h-2 bg-blue-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
                 </div>
-                <span className="text-sm text-gray-300">AI is analyzing...</span>
+                <span className="text-sm text-gray-200">AI is analyzing...</span>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export const ChatPanel: React.FC<ChatPanelProps> = ({
                   key={i}
                   onClick={() => setUserInput(prompt)}
                   disabled={isLoading}
-                  className="px-3 py-1 bg-slate-700/50 hover:bg-slate-600/50 text-xs text-gray-300 hover:text-white rounded-full transition-all duration-200 border border-slate-600/50 hover:border-slate-500/50"
+                  className="px-3 py-1 bg-slate-700/50 hover:bg-slate-600/50 text-xs text-gray-200 hover:text-white rounded-full transition-all duration-200 border border-slate-600/50 hover:border-slate-500/50"
                 >
                   {prompt}
                 </button>

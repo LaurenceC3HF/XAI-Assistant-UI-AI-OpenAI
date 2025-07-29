@@ -41,7 +41,7 @@ export const ScenarioPhases: React.FC<ScenarioPhasesProps> = ({ phases }) => {
                       flex items-start p-3 rounded-lg transition-all duration-200
                       ${isXAIActivation 
                         ? 'bg-amber-500/20 border border-amber-500/50 text-amber-200' 
-                        : 'bg-slate-800/50 hover:bg-slate-800/70 text-gray-300'
+                        : 'bg-slate-800/50 hover:bg-slate-800/70 text-gray-200'
                       }
                     `}
                   >
